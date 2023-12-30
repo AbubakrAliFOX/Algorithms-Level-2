@@ -1,52 +1,41 @@
 #include <iostream>
 using namespace std;
 
-int ReadPositiveNumber(string Msg)
-{
+int ReadPositiveNumber() {
     int Number;
     do
     {
-        cout << Msg << endl;
+        cout << "Enter a positive number: " << endl;
         cin >> Number;
     } while (Number <= 0);
-
+    
     return Number;
 }
 
-bool IsPerfect(int Number)
+bool CheckPrime(int Number)
 {
-    int Sum = 0;
-    for (int i = 1; i < Number; i++)
+    for (int i = Number - 1; i > 1; i--)
     {
-        if (Number % i == 0)
-        {
-            Sum += i;
+        if (Number % i == 0 || Number == 2)
+            return false;
+    }
+
+    return true;
+}
+
+void printPrimeNumbersTo(int Number) {
+    for (int i = 1; i <= Number; i++)
+    {
+        if (CheckPrime(i) == true) {
+            cout << i << endl;
         }
     }
-
-    return Sum == Number;
+    
 }
 
-void PrintPerfectNumber(int Number)
-{
-    if (IsPerfect(Number) == true)
-        cout << Number << " ✔️" << endl;
-    else
-        cout << Number << " ❌" << endl;
-}
-
-void PrintPerfectNumbersTo(int MaxRange)
-{
-    for (int i = 1; i <= MaxRange; i++) {
-        PrintPerfectNumber(i);
-    }
-}
-
-int main()
-{
-    int Number = ReadPositiveNumber("Enter max range");
-    // PrintPerfectNumber(Number);
-    PrintPerfectNumbersTo(Number);
+int main() { 
+    int Number = ReadPositiveNumber();
+    printPrimeNumbersTo(Number);
 
     return 0;
 }
