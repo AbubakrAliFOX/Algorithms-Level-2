@@ -1,41 +1,49 @@
 #include <iostream>
 using namespace std;
 
-int ReadPositiveNumber() {
+int ReadPositiveNumber()
+{
     int Number;
     do
     {
         cout << "Enter a positive number: " << endl;
         cin >> Number;
     } while (Number <= 0);
-    
+
     return Number;
 }
 
-bool CheckPrime(int Number)
+bool IsPerfect(int Number)
 {
-    for (int i = Number - 1; i > 1; i--)
+    int Sum = 0;
+    for (int i = 1; i < Number; i++)
     {
         if (Number % i == 0)
-            return false;
-    }
-
-    return true;
-}
-
-void printPrimeNumbersTo(int Number) {
-    for (int i = 1; i <= Number; i++)
-    {
-        if (CheckPrime(i) == true) {
-            cout << i << endl;
+        {
+            Sum += i;
         }
     }
-    
+
+    if (Sum == Number)
+    {
+        return true;
+    }
+
+    return false;
 }
 
-int main() { 
+void PrintPerfectNumber(int Number)
+{
+    if (IsPerfect(Number) == true)
+        cout << Number << " is perfect" << endl;
+    else
+        cout << Number << " is not perfect" << endl;
+}
+
+int main()
+{
     int Number = ReadPositiveNumber();
-    printPrimeNumbersTo(Number);
+    PrintPerfectNumber(Number);
 
     return 0;
 }
