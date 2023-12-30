@@ -31,15 +31,27 @@ int CheckFrequency(int Number, int Digit)
     return Freq;
 }
 
-void PrintFrequency (int Freq)
+void PrintFrequency (int Digit ,int Freq)
 {
-    cout << "Frequqency is: " << Freq << " times" << endl;
+    cout << "Frequqency of " << Digit << " is: " << Freq << " times" << endl;
+}
+
+void PrintAllNumbersFrequency (int Number) {
+    for (int i = 0; i < 10; i++) {
+
+        int Frequency = CheckFrequency(Number, i);
+
+        if (Frequency > 0) {
+            PrintFrequency(i, Frequency);
+        }
+    }
 }
 
 int main()
 {
     int Number = ReadPositiveNumber("Enter a Number");
-    int Digit = ReadPositiveNumber("Enter a digit");
-    PrintFrequency(CheckFrequency(Number, Digit));
+    // int Digit = ReadPositiveNumber("Enter a digit");
+    // PrintFrequency(Digit, CheckFrequency(Number, Digit));
+    PrintAllNumbersFrequency(Number);
     return 0;
 }
