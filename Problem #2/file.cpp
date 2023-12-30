@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
-int ReadPositiveNumber()
+int ReadPositiveNumber(string Msg)
 {
     int Number;
     do
     {
-        cout << "Enter a positive number: " << endl;
+        cout << Msg << endl;
         cin >> Number;
     } while (Number <= 0);
 
@@ -24,26 +24,29 @@ bool IsPerfect(int Number)
         }
     }
 
-    if (Sum == Number)
-    {
-        return true;
-    }
-
-    return false;
+    return Sum == Number;
 }
 
 void PrintPerfectNumber(int Number)
 {
     if (IsPerfect(Number) == true)
-        cout << Number << " is perfect" << endl;
+        cout << Number << " ✔️" << endl;
     else
-        cout << Number << " is not perfect" << endl;
+        cout << Number << " ❌" << endl;
+}
+
+void PrintPerfectNumbersTo(int MaxRange)
+{
+    for (int i = 1; i <= MaxRange; i++) {
+        PrintPerfectNumber(i);
+    }
 }
 
 int main()
 {
-    int Number = ReadPositiveNumber();
-    PrintPerfectNumber(Number);
+    int Number = ReadPositiveNumber("Enter max range");
+    // PrintPerfectNumber(Number);
+    PrintPerfectNumbersTo(Number);
 
     return 0;
 }
