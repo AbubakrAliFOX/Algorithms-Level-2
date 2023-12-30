@@ -15,6 +15,7 @@ int ReadPositiveNumber(string Msg)
     return Number;
 }
 
+
 void PrintReverseNumber(int Number)
 {
     int CurrentNumber = 0;
