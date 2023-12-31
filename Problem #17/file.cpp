@@ -15,32 +15,22 @@ string TakeString(string Msg)
 
 string Encrypt(string Word, short Key)
 {
-    char CurrentLetter;
-    string Result = "";
     for (int i = 0; i <= Word.length() - 1; i++)
     {
-        CurrentLetter = Word[i];
-        int ASCII = (int)CurrentLetter;
-        ASCII += Key;
-        Result += char(ASCII);
+        Word[i] = char((int)Word[i] + Key);
     }
 
-    return Result;
+    return Word;
 }
 
 string Decrypt(string Word, short Key)
 {
-    char CurrentLetter;
-    string Result = "";
     for (int i = 0; i <= Word.length() - 1; i++)
     {
-        CurrentLetter = Word[i];
-        int ASCII = (int)CurrentLetter;
-        ASCII -= Key;
-        Result += char(ASCII);
+        Word[i] = char((int)Word[i] - Key);
     }
 
-    return Result;
+    return Word;
 }
 
 void PrintInput(string Input)
