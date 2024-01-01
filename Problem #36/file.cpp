@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -12,7 +13,7 @@ float ReadNumber(string Msg)
     return Number;
 }
 
-int floor(float Number)
+int myFloor(float Number)
 {
     if (Number < 0)
     {
@@ -22,12 +23,30 @@ int floor(float Number)
     return (int)Number;
 }
 
+
+int myCeil(float Number)
+{
+    if (Number < 0)
+    {
+        return (int) Number;
+    }
+
+    return (int) ++Number;
+}
+
+float mySqrt(float Number)
+{
+    return pow(Number, 0.5);
+}
+
 int main()
 {
 
     float Number = ReadNumber("Enter Your Number");
 
-    cout << "FLOOR is : " << floor(Number) << endl;
+    cout << "MYFLOOR is : " << myFloor(Number) << endl;
+    cout << "MYCEIL is : " << myCeil(Number) << endl;
+    cout << "MYSQRT is : " << mySqrt(Number) << endl;
 
     return 0;
 }
