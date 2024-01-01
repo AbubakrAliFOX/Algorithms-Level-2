@@ -62,6 +62,10 @@ int SearchWithinArray(int Arr[100], int ArrayLength, int SearchItem)
     return -1;
 }
 
+bool IsNumberInArray(int Arr[100], int ArrayLength, int SearchItem){
+    return SearchWithinArray(Arr, ArrayLength, SearchItem) != -1;
+}
+
 void PrintSearchResul(int index, int SearchItem)
 {
     cout << "The Number you are searching is: " << SearchItem << endl;
