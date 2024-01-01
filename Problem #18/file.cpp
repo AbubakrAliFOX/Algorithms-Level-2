@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -7,63 +8,45 @@ int ReadPositiveNumber(string Msg)
     int Number;
     do
     {
-        cout << Msg << " ";
+        cout << Msg << endl;
         cin >> Number;
     } while (Number <= 0);
 
     return Number;
 }
 
-
-int GetArrayElement(int ElementNumber)
-{
-    int CurrentElement = ReadPositiveNumber("Element [" + to_string(ElementNumber + 1) + "]: ");
-    return CurrentElement;
+int RandomNumber (int From, int To) {
+    int randNum = rand() % (To - From + 1) + From;
+    return randNum;
 }
 
-void CreateArray(int ArrayOfElements[], int NumberOfElements)
-{
+string GenerateKey () {
+    string RandomKey = "";
 
-    for (int i = 0; i < NumberOfElements; i++)
-    {
-        ArrayOfElements[i] = GetArrayElement(i);
-    }
-
-}
-
-void CheckInput(int ArrayOfElements[], int NumberOfElements, int InputToCheck)
-{
-    int Counter = 0;
-
-    for (int i = 0; i < NumberOfElements; i++)
-    {
-        cout << ArrayOfElements[i] << endl;
-
-        if (ArrayOfElements[i] == InputToCheck) {
-            Counter++;
+    for (int i = 1; i < 20; i++) {
+        if (i % 5 == 0) {
+            RandomKey += "-";
+        } else {
+            RandomKey += char(RandomNumber(65, 90));
         }
     }
 
-    if (Counter > 0) {
-        cout << InputToCheck << " has been repeated " << Counter << " time(s). " << endl;
-    } else {
-        cout << InputToCheck << " Does not exist in this array " << endl;
+    return RandomKey;
+}
+
+void PrintKey (int Times) {
+    for (int i = 1; i <= Times; i++)
+    {
+        cout << "Key [" << i << "] : " << GenerateKey() << endl;
     }
     
 }
 
 int main()
 {
+    srand((unsigned)time(NULL));
 
-    int NumberOfElements = ReadPositiveNumber("How many elements do you want?");
-
-    int ArrayOfElements[NumberOfElements] = {};
-
-    CreateArray(ArrayOfElements, NumberOfElements);
-
-    int InputToCheck = ReadPositiveNumber("What would you like to check?");
-
-    CheckInput(ArrayOfElements, NumberOfElements, InputToCheck);
-
+    int Times = ReadPositiveNumber("How many keys do you want?");
+    PrintKey(Times);
     return 0;
 }
