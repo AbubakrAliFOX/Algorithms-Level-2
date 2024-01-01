@@ -74,6 +74,17 @@ int ArraySum(int Arr[100], int ArrayLength)
     return Sum;
 }
 
+float ArrayAverage(int Arr[100], int ArrayLength)
+{
+    int Sum = 0;
+    for (int i = 0; i < ArrayLength; i++)
+    {
+        Sum += Arr[i];
+    }
+
+    return (float) Sum / ArrayLength;
+}
+
 int main()
 {
     srand((unsigned)time(NULL));
@@ -89,6 +100,8 @@ int main()
     cout << "Smallest Number is: " << FindSmallestNumber(Arr, ArrayLength) << endl;
 
     cout << "Sum of Array is: " << ArraySum(Arr, ArrayLength) << endl;
+
+    cout << "Average of Array is: " << ArrayAverage(Arr, ArrayLength) << endl;
 
     return 0;
 }
